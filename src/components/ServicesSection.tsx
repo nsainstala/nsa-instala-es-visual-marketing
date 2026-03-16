@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -105,19 +104,6 @@ const SERVICES = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-      delay: i * 0.08,
-    },
-  }),
-};
-
 export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -130,7 +116,7 @@ export default function ServicesSection() {
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16"
         >
           <span className="label-mono">Especialidades Técnicas</span>
@@ -148,10 +134,9 @@ export default function ServicesSection() {
           {SERVICES.map((svc, i) => (
             <motion.div
               key={svc.id}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "show" : "hidden"}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.08 }}
               className="card-industrial p-8 group cursor-default"
             >
               <div className="text-nsa-orange mb-5 opacity-80 group-hover:opacity-100 transition-opacity">

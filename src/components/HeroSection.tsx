@@ -2,14 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, Wrench } from "lucide-react";
 import heroHood from "@/assets/hero-hood.png";
 
-const FADE_UP = {
-  hidden: { opacity: 0, y: 24 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
-  }),
-};
+const EASE = "easeOut";
 
 export default function HeroSection() {
   return (
@@ -24,21 +17,17 @@ export default function HeroSection() {
         {/* Left: Copy */}
         <div className="space-y-8 z-10">
           <motion.div
-            variants={FADE_UP}
-            initial="hidden"
-            animate="show"
-            custom={0}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0 }}
           >
-            <span className="label-mono">
-              ⚙ Especialistas em Instalação Residencial
-            </span>
+            <span className="label-mono">⚙ Especialistas em Instalação Residencial</span>
           </motion.div>
 
           <motion.h1
-            variants={FADE_UP}
-            initial="hidden"
-            animate="show"
-            custom={0.1}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.05]"
           >
             SOLUÇÃO EM{" "}
@@ -47,10 +36,9 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.p
-            variants={FADE_UP}
-            initial="hidden"
-            animate="show"
-            custom={0.2}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
             className="text-nsa-steel text-lg max-w-md leading-relaxed"
           >
             Especialistas em coifas, cooktops, fornos e áreas gourmet.
@@ -58,10 +46,9 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            variants={FADE_UP}
-            initial="hidden"
-            animate="show"
-            custom={0.3}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <a
@@ -75,7 +62,7 @@ export default function HeroSection() {
             </a>
             <a
               href="#servicos"
-              className="flex items-center gap-2 px-6 py-4 border border-white/10 rounded-lg text-nsa-white font-semibold hover:border-nsa-orange/50 transition-colors duration-300"
+              className="flex items-center justify-center gap-2 px-6 py-4 border border-white/10 rounded-lg text-nsa-white font-semibold hover:border-nsa-orange/50 transition-colors duration-300"
             >
               Ver Serviços
             </a>
@@ -83,10 +70,9 @@ export default function HeroSection() {
 
           {/* Stats strip */}
           <motion.div
-            variants={FADE_UP}
-            initial="hidden"
-            animate="show"
-            custom={0.4}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
             className="grid grid-cols-3 gap-4 pt-4 border-t border-white/5"
           >
             {[
@@ -109,7 +95,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.2 }}
           className="relative flex items-center justify-center z-10"
         >
           <div className="absolute w-80 h-80 rounded-full bg-nsa-orange/15 blur-[60px]" />
@@ -118,20 +104,21 @@ export default function HeroSection() {
             alt="Coifa profissional em aço inox"
             className="relative z-10 w-full max-w-sm md:max-w-md float-animate drop-shadow-2xl"
           />
-          {/* Badge */}
+          {/* Badge top right */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.8, duration: 0.6, ease: EASE }}
             className="absolute top-8 right-0 card-industrial px-4 py-3 text-right"
           >
             <p className="label-mono">Padrão NSA</p>
             <p className="text-nsa-white font-bold text-sm">Instalação Certificada</p>
           </motion.div>
+          {/* Badge bottom left */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 1, duration: 0.6, ease: EASE }}
             className="absolute bottom-12 left-0 card-industrial px-4 py-3"
           >
             <p className="label-mono">Atendimento</p>
